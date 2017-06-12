@@ -38,49 +38,44 @@ class IFM {
 				<style type="text/css">';?> @@@src/style.css@@@ <?php print '</style>
 			</head>
 			<body>
-				<nav class="navbar navbar-inverse navbar-fixed-top">
-					<div class="container">
-						<div class="navbar-header">
-							<a class="navbar-brand">IFM</a>
-							<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
+				<nav class="navbar navbar-toggleable-md fixed-top bg-faded">
+				<div class="container">
+				 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        				<span class="navbar-toggler-icon"></span>
+      				</button>
+					<a class="navbar-brand">IFM</a>
 						<div class="navbar-collapse collapse" id="navbar">
-							<form class="navbar-form navbar-left">
+							<form class="form-inline mt-2 mt-md-0">
 								<div class="form-group">
 									<div class="input-group">
-										<span class="input-group-addon" id="currentDirLabel">Content of <span id="docroot">';
+										<span class="input-group-addon" id="currentDirLabel">Content of ';
 										print ( IFMConfig::showpath == 1 ) ? realpath( IFMConfig::root_dir ) : "/";
-										print '</span></span><input class="form-control" id="currentDir" aria-describedby="currentDirLabel" type="text">
+										print '</span><input class="form-control" id="currentDir" aria-describedby="currentDirLabel" type="text">
 									</div>
 								</div>
 							</form>
-							<ul class="nav navbar-nav navbar-right">
-								<li><a id="refresh"><span title="refresh" class="icon icon-arrows-cw"></span> <span class="visible-xs">refresh</span></a></li>';
+							<ul class="nav navbar-nav ml-auto">
+								<li class="nav-item"><a class="nav-link" id="refresh"><span title="refresh" class="icon icon-arrows-cw"></span> <span class="visible-xs">Refresh</span></a></li>';
 								if( IFMConfig::upload == 1 ) {
-									print '<li><a id="upload"><span title="upload" class="icon icon-upload"></span> <span class="visible-xs">upload</span></a></li>';
+									print '<li class="nav-item"><a class="nav-link" id="upload"><span title="upload" class="icon icon-upload"></span> <span class="visible-xs">Upload</span></a></li>';
 								}
 								if( IFMConfig::createfile == 1 ) {
-									print '<li><a id="createFile"><span title="new file" class="icon icon-doc-inv"></span> <span class="visible-xs">new file</span></a></li>';
+									print '<li class="nav-item"><a class="nav-link" id="createFile"><span title="new file" class="icon icon-doc-inv"></span> <span class="visible-xs">New File</span></a></li>';
 								}
 								if( IFMConfig::createdir == 1 ) {
-									print '<li><a id="createDir"><span title="new folder" class="icon icon-folder"></span> <span class="visible-xs">new folder</span></a></li>';
+									print '<li class="nav-item"><a class="nav-link" id="createDir"><span title="new folder" class="icon icon-folder"></span> <span class="visible-xs">New Folder</span></a></li>';
 								}
-								print '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="icon icon-down-open"></span></a><ul class="dropdown-menu" role="menu">';
+								print '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a><div class="dropdown-menu" role="menu">';
 								$options = false;
 								if( IFMConfig::remoteupload == 1 ) {
-									print '<li><a onclick="ifm.remoteUploadDialog();return false;"><span class="icon icon-upload-cloud"></span> remote upload</a></li>';
+									print '<a class="dropdown-item" onclick="ifm.remoteUploadDialog();return false;"><span class="icon icon-upload-cloud"></span> Remote Upload</a>';
 									$options = true;
 								}
 								if( IFMConfig::ajaxrequest == 1 ) {
-									print '<li><a onclick="ifm.ajaxRequestDialog();return false;"><span class="icon icon-link-ext"></span> ajax request</a></li>';
+									print '<a class="dropdown-item" onclick="ifm.ajaxRequestDialog();return false;"><span class="icon icon-link-ext"></span> Ajax Request</a>';
 									$options = true;
 								}
-								if( !$options ) print '<li>No options available</li>';
+								if( !$options ) print '<a class="dropdown-item">No options available.</a>';
 								print '</ul>
 								</li>
 							</ul>
@@ -105,9 +100,11 @@ class IFM {
 					</tbody>
 				</table>
 				</div>
+				<footer class="footer">
 				<div class="container">
-				<div class="panel panel-default footer"><div class="panel-body">IFM - improved file manager | ifm.php hidden | <a href="http://github.com/misterunknown/ifm">Visit the project on GitHub</a></div></div>
+					<span class="text-muted">IFM - improved file manager | ifm.php hidden | <a href="http://github.com/misterunknown/ifm">Visit the project on GitHub</a></span>
 				</div>
+				</footer>
 				<script>';?> @@@src/includes/ace.js@@@ <?php print '</script>
 				<script>';?> @@@src/includes/jquery.min.js@@@ <?php print '</script>
 				<script>';?> @@@src/includes/bootstrap.min.js@@@ <?php print '</script>

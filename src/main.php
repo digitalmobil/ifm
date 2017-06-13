@@ -107,6 +107,7 @@ class IFM {
 				</footer>
 				<script>';?> @@@src/includes/ace.js@@@ <?php print '</script>
 				<script>';?> @@@src/includes/jquery.min.js@@@ <?php print '</script>
+				<script>';?> @@@src/includes/tether.min.js@@@ <?php print '</script>
 				<script>';?> @@@src/includes/bootstrap.min.js@@@ <?php print '</script>
 				<script>';?> @@@src/includes/bootstrap-notify.min.js@@@ <?php print '</script>
 				<script>';?> @@@src/includes/ekko-lightbox.min.js@@@ <?php print '</script>

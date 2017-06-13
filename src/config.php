@@ -55,7 +55,7 @@ class IFMConfig {
 	   	const auth_source = 'inline;admin:$2y$10$0Bnm5L4wKFHRxJgNq.oZv.v7yXhkJZQvinJYR2p6X1zPvzyDRUVRC';
 	   	const auth_source = 'file;/path/to/file';
 	*/
-	const auth = 0;
+	const auth = 1;
 	const auth_source = 'inline;admin:$2y$10$0Bnm5L4wKFHRxJgNq.oZv.v7yXhkJZQvinJYR2p6X1zPvzyDRUVRC';
 
 	/*

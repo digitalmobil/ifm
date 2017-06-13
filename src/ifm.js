@@ -93,16 +93,16 @@ function IFM() {
 				newRow += '<td>' + data[i].filesize + '</td>';
 			// permissions
 			if( self.config.showpermissions > 0 )
-				newRow += '<td class="hidden-xs"><input type="text" name="newperms" class="form-control" value="'+data[i].fileperms+'"' +
+				newRow += '<td class="hidden-xs-down"><input type="text" name="newperms" class="form-control" value="'+data[i].fileperms+'"' +
 						(self.config.chmod==1?' onkeypress="ifm.changePermissions(event, \''+data[i].name+'\');"' : 'readonly' ) +
 						( data[i].filepermmode.trim() != "" ? ' class="' + data[i].filepermmode + '"' : '' ) +
 						'></td>';
 			// owner
 			if( self.config.showowner > 0 )
-			   	newRow += '<td class="hidden-xs hidden-sm">'+data[i].owner+'</td>';
+			   	newRow += '<td class="hidden-sm-down">'+data[i].owner+'</td>';
 			// group
 			if( self.config.showgroup > 0 )
-				newRow += '<td class="hidden-xs hidden-sm hidden-md">' + data[i].group + '</td>';
+				newRow += '<td class="hidden-md-down">' + data[i].group + '</td>';
 			// actions
 			if( self.inArray( 1, [self.config.edit, self.config.rename, self.config.delete, self.config.extract] ) ) {
 				newRow += '<td>';
@@ -213,7 +213,7 @@ function IFM() {
 		self.showModal( '<form id="createDir">\
 				<div class="modal-body">\
 				<fieldset>\
-				<label>Directoy name:</label>\
+				<label>Directory name:</label>\
 				<input onkeypress="return ifm.preventEnter(event);" class="form-control" type="text" name="dirname" value="" />\
 				</fieldset>\
 				</div>\

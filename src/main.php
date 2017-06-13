@@ -38,7 +38,7 @@ class IFM {
 				<style type="text/css">';?> @@@src/style.css@@@ <?php print '</style>
 			</head>
 			<body>
-				<nav class="navbar navbar-toggleable-md fixed-top bg-faded">
+				<nav class="navbar navbar-toggleable-md fixed-top navbar-light bg-faded">
 				<div class="container">
 				 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         				<span class="navbar-toggler-icon"></span>
@@ -55,15 +55,15 @@ class IFM {
 								</div>
 							</form>
 							<ul class="nav navbar-nav ml-auto">
-								<li class="nav-item"><a class="nav-link" id="refresh"><span title="refresh" class="icon icon-arrows-cw"></span> <span class="visible-xs">Refresh</span></a></li>';
+								<li class="nav-item"><a class="nav-link" id="refresh"><span title="refresh" class="icon icon-arrows-cw"></span> <span class="hidden-sm-up">Refresh</span></a></li>';
 								if( IFMConfig::upload == 1 ) {
-									print '<li class="nav-item"><a class="nav-link" id="upload"><span title="upload" class="icon icon-upload"></span> <span class="visible-xs">Upload</span></a></li>';
+									print '<li class="nav-item"><a class="nav-link" id="upload"><span title="upload" class="icon icon-upload"></span> <span class="hidden-sm-up">Upload</span></a></li>';
 								}
 								if( IFMConfig::createfile == 1 ) {
-									print '<li class="nav-item"><a class="nav-link" id="createFile"><span title="new file" class="icon icon-doc-inv"></span> <span class="visible-xs">New File</span></a></li>';
+									print '<li class="nav-item"><a class="nav-link" id="createFile"><span title="new file" class="icon icon-doc-inv"></span> <span class="hidden-sm-up">New File</span></a></li>';
 								}
 								if( IFMConfig::createdir == 1 ) {
-									print '<li class="nav-item"><a class="nav-link" id="createDir"><span title="new folder" class="icon icon-folder"></span> <span class="visible-xs">New Folder</span></a></li>';
+									print '<li class="nav-item"><a class="nav-link" id="createDir"><span title="new folder" class="icon icon-folder"></span> <span class="hidden-sm-up">New Folder</span></a></li>';
 								}
 								print '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a><div class="dropdown-menu" role="menu">';
 								$options = false;
@@ -88,23 +88,21 @@ class IFM {
 						<tr>
 							<th>Filename</th>';
 							if( IFMConfig::download == 1 ) print '<th><!-- column for download link --></th>';
-							if( IFMConfig::showlastmodified == 1 ) print '<th>last modified</th>';
-							if( IFMConfig::showfilesize == 1 ) print '<th>size</th>';
-							if( IFMConfig::showpermissions > 0 ) print '<th class="hidden-xs">permissions</th>';
-							if( IFMConfig::showowner == 1 && function_exists( "posix_getpwuid" ) ) print '<th class="hidden-xs hidden-sm">owner</th>';
-							if( IFMConfig::showgroup == 1 && function_exists( "posix_getgrgid" ) ) print '<th class="hidden-xs hidden-sm hidden-md">group</th>';
+							if( IFMConfig::showlastmodified == 1 ) print '<th>Last Modified</th>';
+							if( IFMConfig::showfilesize == 1 ) print '<th>Size</th>';
+							if( IFMConfig::showpermissions > 0 ) print '<th class="hidden-xs-down">Permissions</th>';
+							if( IFMConfig::showowner == 1 && function_exists( "posix_getpwuid" ) ) print '<th class="hidden-sm-down">Owner</th>';
+							if( IFMConfig::showgroup == 1 && function_exists( "posix_getgrgid" ) ) print '<th class="hidden-md-down">Group</th>';
 							if( in_array( 1, array( IFMConfig::edit, IFMConfig::rename, IFMConfig::delete, IFMConfig::zipnload, IFMConfig::extract ) ) ) print '<th class="buttons"><!-- column for buttons --></th>';
 						print '</tr>
 					</thead>
 					<tbody>
 					</tbody>
 				</table>
+					<div class="footer">
+						<span class="text-muted">IFM - improved file manager | ifm.php hidden | <a href="http://github.com/misterunknown/ifm">Visit the project on GitHub</a></span>
+					</div>
 				</div>
-				<footer class="footer">
-				<div class="container">
-					<span class="text-muted">IFM - improved file manager | ifm.php hidden | <a href="http://github.com/misterunknown/ifm">Visit the project on GitHub</a></span>
-				</div>
-				</footer>
 				<script>';?> @@@src/includes/ace.js@@@ <?php print '</script>
 				<script>';?> @@@src/includes/jquery.min.js@@@ <?php print '</script>
 				<script>';?> @@@src/includes/tether.min.js@@@ <?php print '</script>
@@ -652,23 +650,24 @@ class IFM {
 			<head>
 				<title>IFM - improved file manager</title>
 				<meta charset="utf-8">
-				<style type="text/css">
-					* { box-sizing: border-box; font-family: Monospace, Arial, sans-serif; }
-					html { text-align: center; }
-					body { margin:auto; width: auto; display: inline-block; }
-					form { padding: 1em; border: 1px dotted #CCC; }
-					button { margin: 3px; margin-top: 10px; padding: 9px 12px; border: 1px solid #444; border-radius: 2px; font-size: 0.9em; font-weight: bold; text-transform: uppercase; cursor: pointer; background: #444; color: #fff; }
-					div.err { color: red; font-weight: bold; margin-bottom: 1em; }
+				<style type="text/css">';?> @@@src/includes/bootstrap.min.css@@@ <?php print '</style>
+				<style type="text/css">';?> @@@src/includes/ekko-lightbox.min.css@@@ <?php print '</style>
+				<style type="text/css">';?> @@@src/includes/fontello-embedded.css@@@ <?php print '</style>
+				<style type="text/css">';?> @@@src/style.css@@@ <?php print '</style>
 				</style>
-				</head>
-				<body>
-				<h1>IFM - Login</h1>
-				<form method="post">';
-		if($loginFailed){ print '<div class="err">Login attempt failed. Please try again.</div>'; }
-		print '<label>username:</label> <input type="text" name="user" size="12"><br>
-			<label>password:</label> <input type="password" name="pass" size="12"><br>
-			<button type="submit">login</button>
-			</form>
+			</head>
+			<body>
+				<div class="container">
+					<form class="form-signin" method="post">';
+					if($loginFailed){ print '<div class="err">Login attempt failed. Please try again.</div>'; } print '
+						<h2 class="form-signin-heading">IFM - Login</h2>
+						<label for="inputUsername" class="sr-only">Email address</label>
+						<input type="username" id="inputUsername" name="user" class="form-control" placeholder="Username" required autofocus>
+						<label for="inputPassword" class="sr-only">Password</label>
+						<input type="password" id="inputPassword" name="pass" class="form-control" placeholder="Password" required>
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+				    </form>
+				</div>
 			</body>
 			</html>';
 	}

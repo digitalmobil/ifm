@@ -38,9 +38,8 @@ class IFM {
 				<style type="text/css">';?> @@@src/style.css@@@ <?php print '</style>
 			</head>
 			<body>
-				<nav class="navbar navbar-toggleable-md fixed-top navbar-light bg-faded">
-				<div class="container">
-				 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<nav class="navbar navbar-toggleable-sm fixed-top navbar-light bg-faded">
+				 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         				<span class="navbar-toggler-icon"></span>
       				</button>
 					<a class="navbar-brand">IFM</a>
@@ -55,32 +54,26 @@ class IFM {
 								</div>
 							</form>
 							<ul class="nav navbar-nav ml-auto">
-								<li class="nav-item"><a class="nav-link" id="refresh"><span title="refresh" class="icon icon-arrows-cw"></span> <span class="hidden-sm-up">Refresh</span></a></li>';
+								<li class="nav-item"><a class="nav-link" id="refresh"><span title="refresh" class="icon icon-arrows-cw"></span> <span class="hidden-md-up">Refresh</span></a></li>';
 								if( IFMConfig::upload == 1 ) {
-									print '<li class="nav-item"><a class="nav-link" id="upload"><span title="upload" class="icon icon-upload"></span> <span class="hidden-sm-up">Upload</span></a></li>';
+									print '<li class="nav-item"><a class="nav-link" id="upload"><span title="upload" class="icon icon-upload"></span> <span class="hidden-md-up">Upload</span></a></li>';
 								}
 								if( IFMConfig::createfile == 1 ) {
-									print '<li class="nav-item"><a class="nav-link" id="createFile"><span title="new file" class="icon icon-doc-inv"></span> <span class="hidden-sm-up">New File</span></a></li>';
+									print '<li class="nav-item"><a class="nav-link" id="createFile"><span title="new file" class="icon icon-doc-inv"></span> <span class="hidden-md-up">New File</span></a></li>';
 								}
 								if( IFMConfig::createdir == 1 ) {
-									print '<li class="nav-item"><a class="nav-link" id="createDir"><span title="new folder" class="icon icon-folder"></span> <span class="hidden-sm-up">New Folder</span></a></li>';
+									print '<li class="nav-item"><a class="nav-link" id="createDir"><span title="new folder" class="icon icon-folder"></span> <span class="hidden-md-up">New Folder</span></a></li>';
 								}
-								print '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a><div class="dropdown-menu" role="menu">';
-								$options = false;
 								if( IFMConfig::remoteupload == 1 ) {
-									print '<a class="dropdown-item" onclick="ifm.remoteUploadDialog();return false;"><span class="icon icon-upload-cloud"></span> Remote Upload</a>';
-									$options = true;
+									print '<li class="nav-item"><a class="nav-link" onclick="ifm.remoteUploadDialog();return false;"><span title="remote upload" class="icon icon-upload-cloud"></span> <span class="hidden-md-up">Remote Upload</span></a></li>';
 								}
 								if( IFMConfig::ajaxrequest == 1 ) {
-									print '<a class="dropdown-item" onclick="ifm.ajaxRequestDialog();return false;"><span class="icon icon-link-ext"></span> Ajax Request</a>';
-									$options = true;
+									print '<li class="nav-item"><a class="nav-link" onclick="ifm.ajaxRequestDialog();return false;"><span title="ajax request" class="icon icon-link-ext"></span> <span class="hidden-md-up">Ajax Request</span></a></li>';
 								}
-								if( !$options ) print '<a class="dropdown-item">No options available.</a>';
 								print '</ul>
 								</li>
 							</ul>
 						</div>
-					</div>
 				</nav>
 				<div class="container">
 				<table id="filetable" class="table">

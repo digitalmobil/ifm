@@ -353,13 +353,16 @@ function IFM() {
 	};
 
 	this.renameFileDialog = function(name) {
-		self.showModal( '<div class="modal-body">\
-			<form id="renameFile">\
+		self.showModal( '<form id="renameFile">\
+			<div class="modal-body">\
 			<fieldset>\
 				<label>Rename '+name+' to:</label>\
 				<input onkeypress="return ifm.preventEnter(event);" class="form-control" type="text" name="newname" /><br>\
+				</fieldset>\
+				</div>\
+				<div class="modal-footer">\
 				<button class="btn btn-default" onclick="ifm.renameFile(\''+ifm.JSEncode(name)+'\');ifm.hideModal();return false;">Rename</button><button class="btn btn-default" onclick="ifm.hideModal();return false;">Cancel</button>\
-			</fieldset>\
+			</div>\
 			</form>\
 		</div>' );
 	};

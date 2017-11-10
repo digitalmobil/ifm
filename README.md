@@ -1,6 +1,20 @@
 # IFM - improved file manager
+## contents
+ - [about](#about)
+ - [features](#features)
+ - [requirements](#requirements)
+ - [installation](#installation)
+ - [security information](#security-information)
+ - [keybindings](#keybindings)
+ - [configuration](#configuration)
+ - [docker](#docker)
+ - [screenshots](#screenshots)
+ - [issues](#issues)
+
 ## about
 The IFM is a web-based filemanager, which comes as a single file solution using HTML5, CSS3, JavaScript and PHP. You can test a [demo here](https://ifmdemo.misterunknown.de/). The credentials are the default credentials: `admin` as username and password.
+
+<a href="https://youtu.be/owJepSas19Y"><img src="https://img.youtube.com/vi/owJepSas19Y/hqdefault.jpg"></a>
 
 The IFM uses the following resources:
 * [ACE Editor](https://ace.c9.io)
@@ -29,7 +43,8 @@ The IFM uses the following resources:
     * curl (for remote upload)
     * json
     * openssl (for remote uploads from https sources)
-    * phar (for tar support)
+    * phar
+    * posix
     * zip
     * zlib
 
@@ -52,8 +67,11 @@ By default, it is not allowed to show or edit the `.htaccess` file. This is beca
 * <kbd>F</kbd> - new file
 * <kbd>D</kbd> - new directory
 * <kbd>c</kbd><kbd>m</kbd> - show copy/move dialog
-* <kbd>space</kbd> - select a highlighted item
-* <kbd>del</kbd> - delete selected files
+* <kbd>/</kbd> - search
+* <kbd>a</kbd> - ajax request
+* <kbd>n</kbd> - rename file
+* <kbd>Space</kbd> - select a highlighted item
+* <kbd>Del</kbd> - delete selected files
 * <kbd>Enter</kbd> - open a file or change to the directory
 
 ## configuration
@@ -66,13 +84,11 @@ See [authentication](https://github.com/misterunknown/ifm/wiki/Authentication).
 The docker image is based on alpine 3.5 for a small image footprint, with necessary apache, php and supporting packages installed and exposes port 80
 
 ### build image
-
 Run the following command from the top source dir:
 
 `docker build -t ifm .`
 
 ### run image
-
 The script is installed inside the image at `/var/www/html/index.php`. Its default configuration is unchanged, thus it will display the contents of the document root (`/var/www/html`)
 
 Here is an example of how to start up a container with this image:
